@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dikdik Musfar · Data & BI Analyst</title>
+<meta name="description" content="Data & Business Intelligence Analyst based in Bandung. Dashboards, data pipelines and reporting for banking, FMCG and the public sector.">
+<meta name="theme-color" content="#0F172A">
+<script>
+  (function () {
+    var t = 'dark';
+    try { t = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Dikdik Musfar · Data & BI Analyst">
+<meta property="og:description" content="Data & BI analyst in Bandung. Banking, FMCG and public sector.">
+<meta property="og:url" content="https://dikdikmusfarp.github.io/hi/">
+<meta property="og:image" content="https://dikdikmusfarp.github.io/hi/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/avatar.jpg">
+<link rel="apple-touch-icon" href="assets/avatar.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root, [data-theme="dark"] {
+  --bg: #0F172A;
+  --surface: #1E293B;
+  --line: #334155;
+  --heading: #FFFFFF;
+  --text: #CBD5E1;
+  --muted: #94A3B8;
+  --faint: #64748B;
+  --accent: #22D3EE;
+  --btn: #06B6D4;
+  --btn-hover: #22D3EE;
+  --on-btn: #0F172A;
+  --chip-bg: rgba(22, 78, 99, .3);
+  --chip-line: rgba(6, 182, 212, .3);
+  --avatar-ring: #1E293B;
+  --glass: rgba(15, 23, 42, .85);
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --line: #E2E8F0;
+  --heading: #0F172A;
+  --text: #1E293B;
+  --muted: #475569;
+  --faint: #64748B;
+  --accent: #2563EB;
+  --btn: #2563EB;
+  --btn-hover: #1D4ED8;
+  --on-btn: #FFFFFF;
+  --chip-bg: #DBEAFE;
+  --chip-line: #BFDBFE;
+  --avatar-ring: #FFFFFF;
+  --glass: rgba(255, 255, 255, .9);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.65 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+h1, h2, h3 { color: var(--heading); margin: 0; line-height: 1.2; letter-spacing: -.02em; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+.icon { width: 17px; height: 17px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 18px; padding-bottom: 18px; }
+.brand { font-weight: 700; font-size: 17px; color: var(--heading); white-space: nowrap; }
+.brand span { color: var(--accent); }
+.brand:hover { text-decoration: none; }
+.top-links { display: flex; align-items: center; gap: 6px; }
+.top-links a, .theme-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px;
+  border: 1px solid var(--line); border-radius: 999px; background: none;
+  color: var(--muted); font-family: inherit; font-size: 13px; font-weight: 500; line-height: 1; cursor: pointer;
+}
+.top-links a:hover, .theme-btn:hover { color: var(--heading); text-decoration: none; }
+.top-links .icon { width: 14px; height: 14px; }
+[data-theme="dark"] .i-moon, [data-theme="light"] .i-sun { display: none; }
+
+/* intro */
+.intro { padding-top: 28px; }
+.scanned {
+  display: none; margin-bottom: 20px; padding: 10px 14px; border-radius: 10px;
+  background: var(--chip-bg); border: 1px solid var(--chip-line); color: var(--heading); font-size: 14px;
+}
+.from-card .scanned { display: block; }
+.intro-head { display: flex; flex-direction: column; gap: 20px; }
+.avatar {
+  width: 104px; height: 104px; border-radius: 50%; object-fit: cover;
+  border: 3px solid var(--avatar-ring); background: linear-gradient(135deg, #334155, #1E293B);
+}
+[data-theme="light"] .avatar { background: linear-gradient(135deg, #DBEAFE, #C7D2FE); }
+.intro h1 { font-size: clamp(36px, 9vw, 52px); font-weight: 800; }
+.intro .role { margin-top: 6px; font-size: 17px; font-weight: 500; color: var(--muted); }
+.intro .bio { margin-top: 20px; font-size: 17px; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 46px; padding: 0 18px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--heading);
+  font-family: inherit; font-size: 15px; font-weight: 600; line-height: 1; cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); text-decoration: none; }
+.btn.primary { background: var(--btn); border-color: var(--btn); color: var(--on-btn); }
+.btn.primary:hover { background: var(--btn-hover); border-color: var(--btn-hover); }
+
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 24px; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+.stats b { display: block; font-size: 28px; font-weight: 800; color: var(--heading); line-height: 1.1; }
+.stats b span { color: var(--accent); }
+.stats div { font-size: 14px; color: var(--muted); }
+
+@media (min-width: 640px) {
+  .intro { padding-top: 48px; }
+  .intro-head { flex-direction: row-reverse; justify-content: space-between; align-items: center; }
+  .avatar { width: 150px; height: 150px; }
+  .stats { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* logos */
+.worked-with { margin-top: 40px; }
+.label { font-size: 13px; font-weight: 600; color: var(--faint); }
+.logos { list-style: none; margin: 16px 0 0; padding: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logos li { display: flex; min-width: 0; }
+.logos img { width: auto; height: var(--h); max-width: 100%; object-fit: contain; }
+[data-theme="dark"] .only-light, [data-theme="light"] .only-dark { display: none; }
+@media (min-width: 640px) {
+  .logos img { height: calc(var(--h) * 1.3); }
+}
+
+/* sections */
+section { margin-top: 64px; }
+section h2 { font-size: 24px; font-weight: 700; margin-bottom: 20px; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: grid; gap: 4px; padding: 18px 0; border-top: 1px solid var(--line); }
+.list li:last-child { border-bottom: 1px solid var(--line); }
+.list .side { font-weight: 700; color: var(--accent); font-size: 18px; }
+.list .side.date { font-size: 14px; font-weight: 500; color: var(--faint); }
+.list h3 { font-size: 17px; font-weight: 600; }
+.list h3 small { font-size: 14px; font-weight: 500; color: var(--faint); }
+.list p { color: var(--muted); font-size: 15px; margin-top: 2px; }
+@media (min-width: 640px) {
+  .list li { grid-template-columns: 150px 1fr; gap: 20px; }
+  .list .side { padding-top: 1px; }
+}
+.more { display: inline-block; margin-top: 16px; font-weight: 600; font-size: 15px; }
+
+.tools { display: grid; gap: 10px; margin: 0; }
+.tools div { display: grid; gap: 2px; }
+.tools dt { font-size: 14px; color: var(--faint); }
+.tools dd { margin: 0; color: var(--heading); }
+@media (min-width: 640px) {
+  .tools div { grid-template-columns: 150px 1fr; gap: 20px; }
+}
+.certs { margin: 18px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+.certs li + li { margin-top: 4px; }
+
+.quote { margin: 0 0 24px; padding-left: 16px; border-left: 3px solid var(--accent); }
+.quote blockquote { margin: 0; font-size: 16px; color: var(--heading); }
+.quote figcaption { margin-top: 8px; font-size: 14px; color: var(--faint); }
+.quote figcaption b { color: var(--text); font-weight: 600; }
+
+.prose p { color: var(--muted); }
+.prose p + p { margin-top: 12px; }
+
+.contact p { color: var(--muted); }
+.contact .email { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 15px; }
+.copy { background: none; border: 0; padding: 0; color: var(--faint); font: inherit; font-size: 14px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.copy:hover { color: var(--heading); }
+
+footer.wrap { margin-top: 72px; padding-bottom: 40px; font-size: 13px; color: var(--faint); }
+footer p { padding-top: 24px; border-top: 1px solid var(--line); }
+
+/* sticky buttons on phones once the intro is scrolled past */
+.dock {
+  position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 10;
+  display: flex; gap: 8px; padding: 8px; border-radius: 14px;
+  background: var(--glass); border: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transform: translateY(150%); transition: transform .3s ease;
+}
+.dock.show { transform: none; }
+.dock .btn { flex: 1; min-height: 44px; font-size: 14px; }
+@media (min-width: 900px) { .dock { display: none; } }
+@media (max-width: 899px) { body { padding-bottom: 80px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .dock { transition: none; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-contact" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+</svg>
+
+<header class="wrap top">
+  <a class="brand" href="#">Dikdik <span>Musfar</span></a>
+  <div class="top-links">
+    <button class="theme-btn" type="button" id="themeBtn" aria-label="Switch light/dark mode">
+      <svg class="icon i-sun"><use href="#i-sun"/></svg><svg class="icon i-moon"><use href="#i-moon"/></svg>
+    </button>
+    <a href="https://dikdikmusfarp.github.io/portfolio-data-analyst/">Portfolio</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    <p class="scanned">👋 Thanks for scanning my card! Here's a bit about me.</p>
+
+    <div class="intro-head">
+      <img class="avatar" src="assets/dikdik-avatar.webp" alt="Dikdik Musfar" width="560" height="560">
+      <div>
+        <h1>Hi, I'm Dikdik.</h1>
+        <p class="role">Data &amp; BI Analyst at Nabati · Bandung</p>
+      </div>
+    </div>
+
+    <p class="bio">I work with data end to end, from automated extraction pipelines to executive dashboards that people actually use. Before Nabati I was a BI analyst at Bank Syariah Indonesia, and I started out as a full-stack developer, so I'm comfortable working right alongside engineering teams.</p>
+
+    <div class="actions" id="introActions">
+      <a class="btn primary" href="dikdik-musfar.vcf" download="Dikdik Musfar.vcf"><svg class="icon"><use href="#i-contact"/></svg>Save contact</a>
+      <a class="btn" href="https://www.linkedin.com/in/dikdikmusfar/"><svg class="icon"><use href="#i-linkedin"/></svg>LinkedIn</a>
+      <a class="btn" href="mailto:dikdikmusfar@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>Email</a>
+    </div>
+
+    <div class="stats">
+      <div><b>4<span>+</span></b>years of experience</div>
+      <div><b>15<span>+</span></b>projects shipped</div>
+      <div><b>3</b>industries</div>
+      <div><b>4.5k<span>+</span></b>institutions impacted</div>
+    </div>
+  </div>
+
+  <div class="worked-with">
+    <p class="label">Companies I've worked with</p>
+    <ul class="logos">
+      <li><img src="assets/logos/nabati.webp" alt="Nabati" width="228" height="140" style="--h:34px"></li>
+      <li><img src="assets/logos/richeese-factory.webp" alt="Richeese Factory" width="331" height="140" style="--h:30px"></li>
+      <li><img src="assets/logos/bsi.webp" alt="Bank Syariah Indonesia" width="493" height="140" style="--h:24px"></li>
+      <li>
+        <img class="only-light" src="assets/logos/disdik-jabar.webp" alt="Dinas Pendidikan Provinsi Jawa Barat" width="267" height="140" style="--h:36px">
+        <img class="only-dark" src="assets/logos/disdik-jabar-dark.webp" alt="Dinas Pendidikan Provinsi Jawa Barat" width="267" height="140" style="--h:36px">
+      </li>
+    </ul>
+  </div>
+
+  <section id="work">
+    <h2>Selected work</h2>
+    <ul class="list">
+      <li>
+        <div class="side">+12%</div>
+        <div>
+          <h3>Bullion Bank Analytics <small>· Bank Syariah Indonesia</small></h3>
+          <p>Indonesia's first gold-banking analytics dashboard, built in two months at top management's request. The gold portfolio grew 12% month-to-date after launch.</p>
+        </div>
+      </li>
+      <li>
+        <div class="side">3×</div>
+        <div>
+          <h3>Sentinel P&amp;L <small>· Nabati</small></h3>
+          <p>Built with the Finance team to flag P&amp;L cost anomalies and suggest follow-up actions using an LLM. Anomalies now get caught three times faster.</p>
+        </div>
+      </li>
+      <li>
+        <div class="side">Same day</div>
+        <div>
+          <h3>RKI KPI Ops <small>· Richeese Factory</small></h3>
+          <p>Operations KPIs for the restaurants. An LLM writes the per-metric insights, Power BI refreshes on its own, and a PDF report reaches management every morning.</p>
+        </div>
+      </li>
+      <li>
+        <div class="side">−30%</div>
+        <div>
+          <h3>Nabati Product DNA <small>· Nabati</small></h3>
+          <p>Nabati's first BI design system (themes, templates, formatting), now used company-wide. Development time dropped 30% and visual revision requests halved.</p>
+        </div>
+      </li>
+      <li>
+        <div class="side">1,000</div>
+        <div>
+          <h3>Branch Performance Hub <small>· Bank Syariah Indonesia</small></h3>
+          <p>One of the 8+ dashboards I shipped at BSI, used across 1,000 branches.</p>
+        </div>
+      </li>
+      <li>
+        <div class="side">4,500</div>
+        <div>
+          <h3>Sigesit Juara <small>· Disdik Jabar</small></h3>
+          <p>Teacher distribution planning used by 4,500 schools in West Java, plus a school scoring framework and a data extraction tool written in Go.</p>
+        </div>
+      </li>
+    </ul>
+    <a class="more" href="https://dikdikmusfarp.github.io/portfolio-data-analyst/projects.html">See all projects on my portfolio →</a>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <ul class="list">
+      <li>
+        <div class="side date">Nov 2025 – now</div>
+        <div>
+          <h3>Data Analyst <small>· PT Kaldu Sari Nabati Indonesia</small></h3>
+          <p>RKI KPI Ops, Sentinel P&amp;L and the Nabati DNA design system. I also led the analysis of the Full Self Order pilot, which measured the sales uplift and informed the decision to roll it out nationally.</p>
+        </div>
+      </li>
+      <li>
+        <div class="side date">Feb 2024 – Oct 2025</div>
+        <div>
+          <h3>Business Intelligence Analyst <small>· Bank Syariah Indonesia</small></h3>
+          <p>8+ dashboards across retail banking, gold, MSME and auto financing, including the Branch Performance Hub. Also made the content for an internal AI campaign seen by 18,000 employees.</p>
+        </div>
+      </li>
+      <li>
+        <div class="side date">Jun 2022 – Feb 2024</div>
+        <div>
+          <h3>Full Stack Developer <small>· Dinas Pendidikan Provinsi Jawa Barat</small></h3>
+          <p>Built Sigesit Juara. Won 1st and 2nd place from BP2D West Java for educational video campaigns.</p>
+        </div>
+      </li>
+      <li>
+        <div class="side date">2018 – 2022</div>
+        <div>
+          <h3>Politeknik Piksi Ganesha</h3>
+          <p>B.A.Sc. in Information Management (GPA 3.80), best graduate of the Informatics cohort.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="tools">
+    <h2>Tools</h2>
+    <dl class="tools">
+      <div><dt>Expert</dt><dd>SQL, Power BI</dd></div>
+      <div><dt>Proficient</dt><dd>Python, AWS Redshift, dbt, Airflow, Hadoop, Impala, LLMs</dd></div>
+      <div><dt>Familiar</dt><dd>Tableau, Looker, Azure DevOps</dd></div>
+    </dl>
+    <ul class="certs">
+      <li><a href="https://icecenter.itb.ac.id/wp-content/uploads/2025/05/dikdik_musfar_pribadi_data_analytics_certification.pdf">Data Analytics with Python</a>, ICE Center ITB (2025)</li>
+      <li><a href="https://drive.google.com/file/d/1A35YMbHlJf5MMc3ubKpPyznhpX_aU2SQ/view">PCAP: Programming Essentials in Python</a>, Cisco (2022)</li>
+    </ul>
+  </section>
+
+  <section id="recommendations">
+    <h2>Recommendations</h2>
+    <figure class="quote">
+      <blockquote>“He did not simply deliver what was asked of him, he consistently raised the standard of work within the team.”</blockquote>
+      <figcaption><b>Fadli Rizkiandi</b>, AVP &amp; Senior Data Lead, my team lead at BSI</figcaption>
+    </figure>
+    <figure class="quote">
+      <blockquote>“Dikdik brings creativity through his passion for UI/UX and storytelling, making every deliverable not just functional but highly engaging.”</blockquote>
+      <figcaption><b>Haniya Azzahra</b>, BI Analyst, colleague at BSI</figcaption>
+    </figure>
+    <figure class="quote">
+      <blockquote>“He consistently delivered high quality results on time and often surprised the team with creative, out of the box solutions.”</blockquote>
+      <figcaption><b>Shendy Aditya</b>, System &amp; Business Analyst, my supervisor at Disdik Jabar</figcaption>
+    </figure>
+  </section>
+
+  <section id="outside-work" class="prose">
+    <h2>Outside work</h2>
+    <p>I volunteer as a teacher with 1000 Guru. So far I've taught first graders at SD Ngadisari near <a href="https://www.youtube.com/watch?v=h2GtVXGUG9c">Mount Bromo</a> and third graders at SD 1 Panawa in <a href="https://www.youtube.com/watch?v=Th4iBBa5gbw">Garut</a>.</p>
+    <p>From 2020 to 2025 I handled communications for Karang Taruna Haur Galur, where I built a social welfare data system covering 18,000+ residents. I also like to run, hence the “rungineer” on my <a href="https://www.instagram.com/dikdikmusfar/">Instagram</a>.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Say hi</h2>
+    <p>Hiring for a data or BI role, or we just met and want to keep in touch? Email or LinkedIn is the quickest way to reach me.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:dikdikmusfar@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/dikdikmusfar/"><svg class="icon"><use href="#i-linkedin"/></svg>LinkedIn</a>
+      <a class="btn" href="https://www.instagram.com/dikdikmusfar/"><svg class="icon"><use href="#i-instagram"/></svg>Instagram</a>
+    </div>
+    <p class="email">dikdikmusfar@gmail.com <button class="copy" type="button" id="copyEmail">copy</button></p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>© <span id="year">2026</span> Dikdik Musfar · Bandung, Indonesia. Logos belong to their respective owners.</p>
+</footer>
+
+<nav class="dock" id="dock" aria-label="Quick actions">
+  <a class="btn primary" href="dikdik-musfar.vcf" download="Dikdik Musfar.vcf"><svg class="icon"><use href="#i-contact"/></svg>Save contact</a>
+  <a class="btn" href="https://www.linkedin.com/in/dikdikmusfar/"><svg class="icon"><use href="#i-linkedin"/></svg>LinkedIn</a>
+</nav>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ?c=1 is added by the QR code on my name card
+  var scanned = false;
+  try {
+    scanned = new URLSearchParams(location.search).get('c') === '1' || sessionStorage.getItem('scanned') === '1';
+    if (scanned) {
+      sessionStorage.setItem('scanned', '1');
+      history.replaceState(null, '', location.pathname + location.hash);
+    }
+  } catch (e) {}
+  if (scanned) root.classList.add('from-card');
+
+  var meta = document.querySelector('meta[name="theme-color"]');
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    meta.setAttribute('content', t === 'dark' ? '#0F172A' : '#F8FAFC');
+  }
+  setTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    setTheme(t);
+    try { localStorage.setItem('theme', t); } catch (e) {}
+  });
+
+  var dock = document.getElementById('dock');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      var e = entries[0];
+      dock.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top < 0);
+    }).observe(document.getElementById('introActions'));
+  }
+
+  var copyBtn = document.getElementById('copyEmail');
+  copyBtn.addEventListener('click', function () {
+    if (!navigator.clipboard) return;
+    navigator.clipboard.writeText('dikdikmusfar@gmail.com').then(function () {
+      copyBtn.textContent = 'copied';
+      setTimeout(function () { copyBtn.textContent = 'copy'; }, 1500);
+    });
+  });
+})();
+</script>
+</body>
+</html>
